@@ -1,0 +1,3 @@
+.idea/
+#the PHP Manual should be downloaded and extracted per implementation
+resources/phpmanual/*
