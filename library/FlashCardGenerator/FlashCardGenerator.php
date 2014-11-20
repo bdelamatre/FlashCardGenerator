@@ -8,12 +8,15 @@ class FlashCardGenerator
     protected $dataSource;
     protected $data;
 
-    public function __construct($dataSource=null){
-        $this->setDataSource($dataSource);
+
+    public function setDataSource($dataSource,$category=null,$getFlashCardsFromDataSource=true){
+        $this->dataSource = $dataSource;
+        $this->setFlashCardsFromDataSource($category);
     }
 
-    public function setDataSource($dataSource){
-        $this->dataSource = $dataSource;
+    public function setFlashCardsFromDataSource($category){
+
+        $this->setFlashCards($this->getDataSource()->getFlashCards($category));
     }
 
     /**
@@ -23,23 +26,16 @@ class FlashCardGenerator
         return $this->dataSource;
     }
 
-    /*public function scrape($category,$refresh=false){
-        if(is_null($this->scrape) || $refresh==true){
-            $this->scrape = $this->getScraper()->scrape($category);
-        }
+    public function getFlashCards(){
+        return $this->flashCards;
     }
 
-    public function getData(){
-        return $this->scrape;
-    }*/
+    public function setFlashCards($flashCards){
+        $this->flashCards = $flashCards;
+    }
 
-    /*public function generateFlashCardsCram($category){
-        $this->scrape($category);
-        $return = '';
-        foreach($this->scrape as $key=>$cardInfo){
-            $return .= "{$cardInfo['front']}[endfront]{$cardInfo['back']}[endback]";
-        }
-        return $return;
-    }*/
+    public function exportCram(){
+
+    }
 
 }

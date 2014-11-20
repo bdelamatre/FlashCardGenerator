@@ -1,12 +1,16 @@
 <?php
 
-include_once('../library/FlashCardGenerator/FlashCardGenerator.php');
-include_once('../library/FlashCardGenerator/DataSource/PHPManualDataSource.php');
+require_once('../vendor/autoload.php');
 
-$dataSource = new FlashCardGenerator\DataSource\PHPManualDataSource('../resources/php-chunked-xhtml');
+//include_once('../library/FlashCardGenerator/FlashCardGenerator.php');
+//include_once('../library/FlashCardGenerator/FlashCard.php');
+//include_once('../library/FlashCardGenerator/DataSource/PHPManualDataSource.php');
 
-$flashCardGenerator = new \FlashCardGenerator\FlashCardGenerator($dataSource);
+//$dataSource = new FlashCardGenerator\DataSource\PHPManualDataSource('../resources/phpmanual/php-chunked-xhtml');
 
-var_dump($flashCardGenerator->getDataSource()->getData('strings'));
+$flashCardGenerator = new \FlashCardGenerator\FlashCardGenerator();
+//$flashCardGenerator->setDataSource($dataSource,"strings");
+
+var_dump($flashCardGenerator->getFlashCards());
 
 //echo $generator->generateFlashCardsCram('strings');

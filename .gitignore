@@ -1,3 +1,8 @@
+#ignore PHP Storm project files
 .idea/*
+
 #the PHP Manual should be downloaded and extracted per implementation
 resources/phpmanual/*
+
+#ignore compose files
+vendor/*

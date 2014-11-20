@@ -13,4 +13,8 @@ abstract class AbstractDataSource
         return $this->formatData($this->getData($category));
     }
 
+    public function getFlashCards($category=null){
+        return $this->getFormattedData($category);
+    }
+
 }

@@ -2,18 +2,28 @@
 
 namespace FlashCardGenerator\DataSource;
 
+use FlashCardGenerator\FlashCard;
+
 include_once('AbstractDataSource.php');
+include_once('../FlashCard.php');
 
 class PHPManualDataSource extends AbstractDataSource
 {
 
     const MANUAL_URL_PREPEND_BOOK = 'book.';
-    const DEFAULT_MANUAL_LOCATION = 'resources/php-chunked-xhtml';
+    const DEFAULT_MANUAL_LOCATION = 'resources/phpmanual/php-chunked-xhtml';
 
     protected $phpManualBaseUrl;
 
     public function __construct($phpManualBaseUrl=self::DEFAULT_MANUAL_LOCATION){
         $this->phpManualBaseUrl = $phpManualBaseUrl;
+        $this->checkIfDownloaded();
+    }
+
+    public function checkIfDownloaded(){
+        if(!file_exists($this->phpManualBaseUrl)){
+            throw new \Exception("The PHP Manual doesn't appear to be downloaded. Try running getPHPManual.php in resources directory.");
+        }
     }
 
     protected function _buildUrl($fileName){
@@ -180,14 +190,16 @@ class PHPManualDataSource extends AbstractDataSource
 
     public function formatData(&$data){
 
+        $return = array();
+
         foreach($data as $key=>$functionInformation){
 
             if(!empty($functionInformation['parameters'])||!empty($functionInformation['description'])){
 
-                array_push($return,array(
+                array_push($return,new FlashCard(array(
                                     'front'=>$functionInformation['name'],
                                     'back'=>$functionInformation['parameters']."\n".$functionInformation['description'],
-                ));
+                )));
 
             }
 
