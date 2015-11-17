@@ -4,9 +4,6 @@ namespace FlashCardGenerator\DataSource;
 
 use FlashCardGenerator\FlashCard;
 
-include_once('AbstractDataSource.php');
-include_once('../FlashCard.php');
-
 class PHPManualDataSource extends AbstractDataSource
 {
 
@@ -194,11 +191,11 @@ class PHPManualDataSource extends AbstractDataSource
 
         foreach($data as $key=>$functionInformation){
 
-            if(!empty($functionInformation['parameters'])||!empty($functionInformation['description'])){
+            if(!empty($functionInformation['parameters']) || !empty($functionInformation['description'])){
 
                 array_push($return,new FlashCard(array(
-                                    'front'=>$functionInformation['name'],
-                                    'back'=>$functionInformation['parameters']."\n".$functionInformation['description'],
+                    'front'=>$functionInformation['name'],
+                    'back'=>$functionInformation['parameters']."\n".$functionInformation['description'],
                 )));
 
             }

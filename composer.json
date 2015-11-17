@@ -10,7 +10,7 @@
         }
     ],
     "autoload": {
-        "psr-4": {"FlashCardGenerator\\": "library/"}
+        "psr-4": {"FlashCardGenerator\\": "library/FlashCardGenerator"}
     },
     "require": {
         "educoder/pest": "dev-master"

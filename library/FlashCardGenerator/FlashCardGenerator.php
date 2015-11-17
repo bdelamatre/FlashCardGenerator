@@ -7,6 +7,7 @@ class FlashCardGenerator
 
     protected $dataSource;
     protected $data;
+    protected $flashCards;
 
 
     public function setDataSource($dataSource,$category=null,$getFlashCardsFromDataSource=true){
@@ -27,6 +28,11 @@ class FlashCardGenerator
     }
 
     public function getFlashCards(){
+
+        if(is_null($this->dataSource)){
+            throw new \Exception("A data source must be set first.");
+        }
+
         return $this->flashCards;
     }
 
