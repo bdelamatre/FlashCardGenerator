@@ -1,10 +1,11 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f28ff3386cb6d009e9b1aee5df52fed8",
+    "hash": "21a7a30660cf84325e57b7c9e8621138",
+    "content-hash": "c00f2615cea5af98cf3cd33ee8bdbcac",
     "packages": [
         {
             "name": "educoder/pest",
@@ -56,6 +57,7 @@
         "educoder/pest": 20
     },
     "prefer-stable": false,
+    "prefer-lowest": false,
     "platform": [],
     "platform-dev": []
 }
