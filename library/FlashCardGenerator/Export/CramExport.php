@@ -2,8 +2,6 @@
 
 namespace FlashCardGenerator\Export;
 
-include_once('AbstractExport.php');
-
 abstract class CramExport
 {
 

@@ -8,6 +8,7 @@ class PHPManualDataSource extends AbstractDataSource
 {
 
     const MANUAL_URL_PREPEND_BOOK = 'book.';
+    const MANUAL_URL_PREPEND_FUNCTION = 'function.';
     const DEFAULT_MANUAL_LOCATION = 'resources/phpmanual/php-chunked-xhtml';
 
     protected $phpManualBaseUrl;
@@ -42,7 +43,7 @@ class PHPManualDataSource extends AbstractDataSource
             $functionUrl = $this->_buildUrl($domFunctions->item($i)->getAttribute('href'));
 
             //make sure manual file exists
-            if (!file_exists($functionUrl)){
+            if (!strstr($functionUrl,self::MANUAL_URL_PREPEND_FUNCTION) || !file_exists($functionUrl)){
                 //fix-me: add error reporting?
                 continue;
             }
@@ -122,8 +123,28 @@ class PHPManualDataSource extends AbstractDataSource
         $queryDescription = new \DOMXPath($functionPageDom);
         $domDescription = $queryDescription->query("//p[@class='para rdfs-comment']");
 
-        if(!$domDescription->length==0){
-            return;
+        //if not found
+        if($domDescription->length==0){
+
+            //check alternative query
+            $domDescription = $queryDescription->query("//p[@class='simpara']");
+
+            //if still not found than return
+            if($domDescription->length==0) {
+                return;
+            }else{
+
+                //get first item
+                $domDescriptionString = $domDescription->item(0)->textContent;
+                //remove new lines
+                $domDescriptionString = str_replace("\n",'',$domDescriptionString);
+                //trip
+                $domDescriptionString = trim($domDescriptionString);
+                //return
+                return $domDescriptionString;
+
+            }
+
         }else{
 
             //get first item

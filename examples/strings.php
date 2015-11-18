@@ -12,6 +12,6 @@ $dataSource = new FlashCardGenerator\DataSource\PHPManualDataSource('../resource
 $flashCardGenerator = new \FlashCardGenerator\FlashCardGenerator();
 $flashCardGenerator->setDataSource($dataSource,"strings");
 
-//var_dump($flashCardGenerator->getFlashCards());
+var_dump($flashCardGenerator->getFlashCards());
 
 //echo $generator->generateFlashCardsCram('strings');
