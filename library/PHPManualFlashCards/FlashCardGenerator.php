@@ -48,8 +48,14 @@ class FlashCardGenerator
         $this->flashCards[$category] = $flashCards;
     }
 
-    public function exportCram(){
+    public function exportCsv($category,$filename="flashcards-export.csv",$delimiter=',',$keepFile=true){
+        $export = new Export\CsvExport();
+        return $export->export($this->getFlashCards($category),$filename,$delimiter,$keepFile);
+    }
 
+    public function exportCram($category){
+        //$export = new Export\CramExport();
+        //return $export->export($this->getFlashCards($category));
     }
 
 }

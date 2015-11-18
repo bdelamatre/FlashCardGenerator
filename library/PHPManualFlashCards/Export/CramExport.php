@@ -2,7 +2,7 @@
 
 namespace PHPManualFlashCards\Export;
 
-abstract class CramExport
+class CramExport
 {
 
     public function __construct($clientId){

@@ -57,4 +57,15 @@ class FlashCard{
         }
     }
 
+    public function exportCsv($filename="flashcards-export.csv",$delimiter=',',$keepFile=true){
+        $export = new Export\CsvExport();
+        return $export->export($this,$filename,$delimiter,$keepFile);
+    }
+
+    public function toArray(){
+        return array('front'=>$this->getFront(),
+                        'back'=>$this->getBack(),
+        );
+    }
+
 }
