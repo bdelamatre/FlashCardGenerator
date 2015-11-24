@@ -4,5 +4,8 @@
 #the PHP Manual should be downloaded and extracted per implementation
 resources/phpmanual/*
 
+#the examples tmp folder contents should be excluded
+examples/tmp/*
+
 #ignore compose files
 vendor/*
